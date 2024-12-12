@@ -1,0 +1,51 @@
+<form [formGroup]="formGroup">
+    <div class="form-group">
+        <label for="userNameId">Name</label>
+        <input
+                formControlName="name"
+                type="text"
+                class="form-control"
+                id="userNameId"
+                placeholder="Enter name"
+                [invalidControl]="formGroup.get('name')"
+                #nameErrorRef="invalidControl"
+        >
+        <div *ngIf="nameErrorRef.isInvalid" class="invalid-feedback">
+            <ng-container *ngIf="nameErrorRef?.errorControl?.errors?.['required']">This field is required.</ng-container>
+            <ng-container *ngIf="nameErrorRef?.errorControl?.errors?.['invalidUsername']">Invalid username</ng-container>
+            <ng-container *ngIf="nameErrorRef?.errorControl?.errors?.['minlength']">
+                Minimum length is {{ nameErrorRef?.errorControl?.errors?.['minlength'].requiredLength }}.
+            </ng-container>
+        </div>
+    </div>
+
+    <div formArrayName="email">
+        <ng-container *ngFor="let email of emailFormArray; let i = index">
+            <div class="form-group">
+                <div class="d-flex gap-4">
+                    <div class="w-100">
+                        <label [for]="i">Email address</label>
+                        <input
+                                [formControlName]="i"
+                                type="email"
+                                class="form-control"
+                                [id]="i"
+                                placeholder="Enter email"
+                                [invalidControl]="email"
+                                #emailErrorRef="invalidControl"
+                        >
+                        <div *ngIf="emailErrorRef.isInvalid" class="invalid-feedback">
+                            <ng-container *ngIf="emailErrorRef?.errorControl?.errors?.['email']">Invalid email.</ng-container>
+                        </div>
+                    </div>
+                    <div class="user-form__close-icon-container"><span class="user-form__close-icon" (click)="removeEmail(i)">&#215;</span></div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="mt-1 text-danger" *ngIf="formGroup.touched && formGroup.invalid">
+        <span *ngIf="formGroup.controls['email']?.errors?.['atLeastOneEmail']">At least one email should be provided.</span>
+    </div>
+
+    <button type="button" class="btn btn-primary my-2" (click)="addEmail()">Add New</button>
+</form>
