@@ -9,13 +9,15 @@ import {NgbAlertModule} from "@ng-bootstrap/ng-bootstrap";
 import {ToastModule} from "../shared/toast/toast.module";
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import {UtilsModule} from "../shared/utils/utils.module";
+import {EmailPipe} from "./pipes/email.pipe";
 
 @NgModule({
   declarations: [
     UserListComponent,
     UserFormComponent,
     CreateUserModalComponent,
-    EditUserComponent
+    EditUserComponent,
+    EmailPipe
   ],
   imports: [
     CommonModule,

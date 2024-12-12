@@ -7,9 +7,9 @@ export interface User {
 }
 
 export const MOCK_USER_DATA: User[] = [
-    { id: 1, name: 'Item 1', email: ['email 1'] },
-    { id: 2, name: 'Item 2', email: ['email 2'] },
-    { id: 3, name: 'Item 3', email: ['email 3'] },
+    { id: 1, name: 'Username1', email: ['email 1'] },
+    { id: 2, name: 'Username2', email: ['email@gmail.com'] },
+    { id: 3, name: 'Username3', email: ['email2@gmail.com', 'email3@gmail.com'] },
 ];
 
 export interface CreateUserPayload {

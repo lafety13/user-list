@@ -15,8 +15,8 @@
         <tbody>
         <tr *ngFor="let user of users$ | async">
             <th scope="row">{{ user.id }}</th>
-            <td (click)="onEdit(user)"><a class="link-primary">{{ user.name }}</a></td>
-            <td>{{ user.email }}</td>
+            <td (click)="onEdit(user)"><a class="link-primary cursor-pointer">{{ user.name }}</a></td>
+            <td>{{ user.email | email }}</td>
             <td>
                 <span class="user-list__close-icon" (click)="onRemove(user.id)">&#215;</span>
             </td>
