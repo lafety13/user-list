@@ -1,12 +1,12 @@
 import { Directive, Input, HostBinding } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
 @Directive({
-    selector: '[appError]',
-    exportAs: 'appError'
+    selector: '[invalidControl]',
+    exportAs: 'invalidControl'
 })
-export class ErrorDirective {
-    @Input() errorControl: AbstractControl | null = null;
+export class InvalidControlDirective {
+    @Input('invalidControl') errorControl: AbstractControl | null = null;
 
     @HostBinding('class.is-invalid')
     get isInvalid(): boolean {

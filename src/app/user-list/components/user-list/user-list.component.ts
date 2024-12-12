@@ -1,15 +1,14 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {UserListService} from "../../services/user-list.service";
-import {RxState, rxState} from "@rx-angular/state";
+import {rxState} from "@rx-angular/state";
 import {CreateUserPayload, User, UserFormGroupValues} from "../../models/user.model";
 import {rxActions} from "@rx-angular/state/actions";
-import {catchError, endWith, exhaustMap, map, Observable, of, startWith, tap} from "rxjs";
+import {catchError, endWith, map, Observable, of, startWith} from "rxjs";
 import {switchMap} from "rxjs/operators";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {CreateUserModalComponent} from "../create-user-modal/create-user-modal.component";
-import {ToastService} from "../../../shared/toast/services/toast,service";
+import {ToastService} from "../../../shared/toast/services/toast.service";
 import {Router} from "@angular/router";
-import {RxActions} from "@rx-angular/state/actions/lib/types";
 
 interface UserListComponentState {
   collection: User[];
